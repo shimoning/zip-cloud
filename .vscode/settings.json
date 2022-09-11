@@ -1,0 +1,21 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#d15640",
+    "activityBar.background": "#4d74f3",
+    "activityBar.foreground": "#f5f8f6",
+    "activityBarBadge.background": "#f5b813"
+  },
+  "cSpell.words": [
+    "Shimoning",
+    "prefcode",
+    "zipcode",
+    "zipcloud"
+  ],
+  "intelephense.environment.phpVersion": "8.1.0",
+  "files.trimTrailingWhitespace": true,
+  "editor.codeLens": false,
+  "editor.tabSize": 2,
+  "[php]": {
+    "editor.tabSize": 4
+  },
+}
