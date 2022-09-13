@@ -35,7 +35,7 @@ echo $response->isSuccess() ? '成功' : '失敗';
 echo $response->getMessage(); // エラー発生時に、エラーの内容が返される。
 
 foreach ($response->getAddresses() as $address) {
-    echo $address->getZipCode(); // 100-0001
+    echo $address->getZipCode(); // 1000001
     echo $address->getPrefectureCode(); // 13
 
     echo $address->getPrefecture(); // 東京都
@@ -45,6 +45,32 @@ foreach ($response->getAddresses() as $address) {
     echo $address->getPrefectureKana(); // ﾄｳｷｮｳﾄ
     echo $address->getCityKana(); // ﾁﾖﾀﾞｸ
     echo $address->getTownKana(); // ﾁﾖﾀﾞ
+
+    // address を 連想配列で取得する
+    $hashedAddress = $address->toArray();
+    // [
+    //     "zip_code" => "1000001",
+    //     "prefecture_code" => "13",
+    //     "prefecture" => "東京都",
+    //     "city" => "千代田区",
+    //     "town" => "千代田",
+    //     "prefecture_kana" => "ﾄｳｷｮｳﾄ",
+    //     "city_kana" => "ﾁﾖﾀﾞｸ",
+    //     "town_kana" => "ﾁﾖﾀﾞ",
+    // ]
+
+    // address の生データを取得
+    $rawAddress = $address->getRaw();
+    // [
+    //     "address1" => "東京都",
+    //     "address2" => "千代田区",
+    //     "address3" => "千代田",
+    //     "kana1" => "ﾄｳｷｮｳﾄ",
+    //     "kana2" => "ﾁﾖﾀﾞｸ",
+    //     "kana3" => "ﾁﾖﾀﾞ",
+    //     "prefcode" => "13",
+    //     "zipcode" => "1000001",
+    // ]
 }
 ```
 

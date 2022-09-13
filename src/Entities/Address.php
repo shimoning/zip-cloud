@@ -4,6 +4,7 @@ namespace Shimoning\ZipCloud\Entities;
 
 class Address
 {
+    private array $_raw = [];
     private ?string $_zipCode;
     private ?string $_prefectureCode;
     private ?string $_prefecture;
@@ -15,6 +16,8 @@ class Address
 
     public function __construct(array $data)
     {
+        $this->_raw = $data;
+
         if (isset($data['zipcode'])) {
             $this->_zipCode = $data['zipcode'];
         }
@@ -113,5 +116,32 @@ class Address
     public function getTownKana(): ?string
     {
         return $this->_townKana;
+    }
+
+    /**
+     * 連想配列で取得
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            'zip_code'          => $this->_zipCode,
+            'prefecture_code'   => $this->_prefectureCode,
+            'prefecture'        => $this->_prefecture,
+            'city'              => $this->_city,
+            'town'              => $this->_town,
+            'prefecture_kana'   => $this->_prefectureKana,
+            'city_kana'         => $this->_cityKana,
+            'town_kana'         => $this->_townKana,
+        ];
+    }
+
+    /**
+     * 無加工のまま取得
+     * @return array
+     */
+    public function getRaw(): array
+    {
+        return $this->_raw;
     }
 }
